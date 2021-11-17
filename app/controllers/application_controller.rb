@@ -32,6 +32,16 @@ class ApplicationController < Sinatra::Base
     workout.to_json
   end
 
+  patch "/workouts/:id" do
+    to_update = Workout.find(:params[:id])
+    to_update.update(
+      name: params[:name],
+      date: params[:date],
+      rest: params[:rest]
+    )
+    to_update.to_json
+  end
+
 # Selected exercise routs
 
   get "/selectedexercises" do
@@ -59,6 +69,19 @@ class ApplicationController < Sinatra::Base
     ex.to_json
   end
 
-
+  #and just in case we decide to add exercises from the front end
+  post "/exercises" do
+    new_ex = Exercise.create(
+      name: params[:name],
+      muscle_group: params[:muscle_group]
+    )
+    new_ex.to_json
+  end
+ 
+  delete "/exercises/:id" do
+    to_remove = Exercise.find(:params[:id])
+    to_remove.destroy
+    to_remove.to_json
+  end
 
 end
