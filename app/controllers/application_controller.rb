@@ -6,4 +6,7 @@ class ApplicationController < Sinatra::Base
     { message: "Good luck with your project!" }.to_json
   end
 
+  get "/workouts" do
+    Workout.all.map{ |wo| {workout: wo, exerciese: wo.selected_exercises}}.to_json
+  end
 end
