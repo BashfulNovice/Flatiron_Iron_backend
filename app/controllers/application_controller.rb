@@ -8,13 +8,13 @@ class ApplicationController < Sinatra::Base
 
   #Workout Routs
   get "/workouts" do
-    Workout.all.map{ |wo| {workout: wo, exerciese: wo.selected_exercises}}.to_json
+    Workout.all.map{ |wo| {workout: wo, exercises: wo.selected_exercises}}.to_json
   end
 
   get "/workouts/:id" do 
     workout = Workout.find(params[:id])
     exs = Workout.find(params[:id]).selected_exercises
-    {workout: workout, exercieses: exs}.to_json
+    {workout: workout, exercises: exs}.to_json
   end
 
   delete "workouts/:id" do
