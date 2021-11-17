@@ -1,5 +1,6 @@
 Exercise.destroy_all
-
+SelectedExercise.destroy_all
+Workout.destroy_all
 
 puts "🌱 Seeding exercises..."
 
@@ -51,17 +52,17 @@ russian_twists = Exercise.create(name: "Russian Twists", muscle_group: "core")
 
 #Example Workouts to load
 puts 'generating example workouts...'
-example_back_workout = Workout.create(name: "generic back", date: 11-29-2021, rest: false)
+example_back_workout = Workout.create(name: "generic back", date: "11-29-2021", rest: false)
 SelectedExercise.create(name: pull_ups.name, sets: 3, reps: 5, workout_id: example_back_workout.id, exercise_id: pull_ups.id)
 SelectedExercise.create(name: cable_rows.name, sets: 3, reps: 10, workout_id: example_back_workout.id, exercise_id: cable_rows.id)
 SelectedExercise.create(name: romans.name, sets: 3, reps: 15, workout_id: example_back_workout.id, exercise_id: romans.id)
 
-example_chest_workout = Workout.create(name: "generic chest", date: 11-30-2021, rest: false)
+example_chest_workout = Workout.create(name: "generic chest", date: "11-30-2021", rest: false)
 SelectedExercise.create(name: bench_press.name, sets: 3, reps: 10, workout_id: example_chest_workout.id, exercise_id: bench_press.id)
 SelectedExercise.create(name: incline.name, sets: 3, reps: 10, workout_id: example_chest_workout.id, exercise_id: incline.id)
 SelectedExercise.create(name: dumbell_press.name, sets: 3, reps: 10, workout_id: example_chest_workout.id, exercise_id: dumbell_press.id)
 
-example_leg_workout = Workout.create(name: "generic legs", date: 12-01-2021, rest: false)
+example_leg_workout = Workout.create(name: "generic legs", date: "12-01-2021", rest: false)
 SelectedExercise.create(name: deadlift.name, sets: 3, reps: 5, workout_id: example_leg_workout.id, exercise_id: deadlift.id)
 SelectedExercise.create(name: squats.name, sets: 3, reps: 10, workout_id: example_leg_workout.id, exercise_id: squats.id)
 SelectedExercise.create(name: bulgarian_squats.name, sets: 3, reps: 15, workout_id: example_leg_workout.id, exercise_id: bulgarian_squats.id)

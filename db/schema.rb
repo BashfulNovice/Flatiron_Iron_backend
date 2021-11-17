@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_224856) do
 
   create_table "workouts", force: :cascade do |t|
     t.string "name"
-    t.date "date"
+    t.string "date"
     t.boolean "rest"
   end
 
