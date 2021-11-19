@@ -38,7 +38,7 @@ class ApplicationController < Sinatra::Base
         workout_id: workout.id
       )
     end
-    {workout: workout, exercises: workout.selected_exercises}}.to_json
+    {workout: workout, exercises: workout.selected_exercises}.to_json
   end
 
   patch "/workouts/:id" do
