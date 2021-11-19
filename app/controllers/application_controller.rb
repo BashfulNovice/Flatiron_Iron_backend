@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     {workout: workout, exercises: exs}.to_json
   end
 
-  delete "workouts/:id" do
+  delete "/workouts/:id" do
     workout = Workout.find(params[:id])
     workout.destroy
     workout.to_json
@@ -25,11 +25,20 @@ class ApplicationController < Sinatra::Base
 
   post "/workouts" do
     workout = Workout.create(
-      name: params[:name],
-      date: params[:date],
-      rest: params[:rest]
+      name: params[:workout]['name'],
+      date: params[:workout]['date'],
+      rest: params[:workout]['rest']
     )
-    workout.to_json
+    params[:exes].each do |ex|
+      SelectedExercise.create(
+        name: ex['name'],
+        sets: ex['sets'],
+        reps: ex['reps'],
+        exercise_id: ex['exercise_id'],
+        workout_id: workout.id
+      )
+    end
+    {workout: workout, exercises: workout.selected_exercises}}.to_json
   end
 
   patch "/workouts/:id" do
@@ -76,6 +85,10 @@ class ApplicationController < Sinatra::Base
       muscle_group: params[:muscle_group]
     )
     new_ex.to_json
+  end
+
+  get "/exercises" do
+    Exercise.all.to_json
   end
  
   delete "/exercises/:id" do
